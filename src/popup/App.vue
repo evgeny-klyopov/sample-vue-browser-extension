@@ -72,6 +72,11 @@ import { ref } from 'vue'
 
 export default {
   name: 'App',
+  mounted () {
+    chrome.runtime.sendMessage({ command: 'someCommand' }, (response) => {
+      console.log('popup :someCommand: response', response)
+    })
+  },
   setup () {
     return {
       tabs: {
